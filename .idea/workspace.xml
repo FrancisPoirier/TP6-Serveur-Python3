@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4224a45-4462-4863-8dec-e42671ff52ce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Serveur/serveur/FileManager.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Serveur/serveur/Protocole.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Serveur/serveur/Protocole_json.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Serveur/serveur/Protocole_xml.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Serveur/serveur/ClientRequest.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Serveur/__init__.py" afterPath="$PROJECT_DIR$/Serveur/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Serveur/serveur/Connection.py" afterPath="$PROJECT_DIR$/Serveur/serveur/Connection.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Serveur/serveur/Protocole_xml.py" afterPath="$PROJECT_DIR$/Serveur/serveur/Protocole_xml.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Serveur/serveur/Serveur.py" afterPath="$PROJECT_DIR$/Serveur/serveur/Serveur.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +32,8 @@
       <file leaf-file-name="Serveur.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Serveur/serveur/Serveur.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+            <state relative-caret-position="216">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -46,8 +42,8 @@
       <file leaf-file-name="Protocole_xml.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Serveur/serveur/Protocole_xml.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+            <state relative-caret-position="522">
+              <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -55,11 +51,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ClientRequest.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Serveur/serveur/ClientRequest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="FileManager.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Serveur/serveur/FileManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="-720">
+              <caret line="15" column="53" lean-forward="false" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -77,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Protocole_json.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Protocole_json.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Serveur/serveur/Protocole_json.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -118,10 +124,12 @@
         <option value="$PROJECT_DIR$/Serveur/serveur/Connection.py" />
         <option value="$PROJECT_DIR$/Serveur/serveur/Protocole.py" />
         <option value="$PROJECT_DIR$/Serveur/serveur/FileManager.py" />
-        <option value="$PROJECT_DIR$/Serveur/serveur/Serveur.py" />
         <option value="$PROJECT_DIR$/Serveur/__init__.py" />
-        <option value="$PROJECT_DIR$/Serveur/serveur/Protocole_xml.py" />
         <option value="$PROJECT_DIR$/Serveur/serveur/Protocole_json.py" />
+        <option value="$PROJECT_DIR$/Serveur/serveur/Serveur.py" />
+        <option value="$PROJECT_DIR$/Serveur/serveur/Protocole_xml.py" />
+        <option value="$PROJECT_DIR$/Serveur/serveur/ClientRequests.py" />
+        <option value="$PROJECT_DIR$/Serveur/serveur/ClientRequest.py" />
       </list>
     </option>
   </component>
@@ -380,9 +388,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -442,12 +449,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Serveur/serveur/FileManager.py">
+    <entry file="file://$PROJECT_DIR$/Serveur/serveur/Serveur.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="216">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Serveur/serveur/Protocole_json.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -460,31 +475,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Serveur/serveur/Serveur.py">
+    <entry file="file://$PROJECT_DIR$/Serveur/serveur/FileManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="-720">
+          <caret line="15" column="53" lean-forward="false" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Serveur/serveur/Protocole_xml.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+        <state relative-caret-position="522">
+          <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Serveur/serveur/Protocole_json.py">
+    <entry file="file://$PROJECT_DIR$/Serveur/serveur/ClientRequest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="252">
+          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>

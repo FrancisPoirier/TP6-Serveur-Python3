@@ -1,0 +1,15 @@
+from enum import Enum
+
+class ClientRequest(Enum):
+    BONJOUR_SERVEUR = 1,
+    NOM_SERVEUR = 2,
+    LISTE_DOSSIERS = 3,
+    LISTE_FICHIERS = 4,
+    CREER_DOSSIER = 5,
+    TELEVERSER_FICHIER = 6,
+    TELECHARGER_FICHIER = 7,
+    SUPPRIMER_DOSSIER = 8,
+    SUPPRIMER_FICHIER = 9,
+    FICHIER_RECENT = 10,
+    FICHIER_IDENTIQUE = 11,
+    QUITTER = 12

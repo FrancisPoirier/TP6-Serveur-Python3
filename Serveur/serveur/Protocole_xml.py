@@ -25,3 +25,6 @@ class Protocole_xml(Protocole):  ## sous classe pour protocole xml
     def generate(self, balise, text=''):
         answer  = self.generateStringFormat(balise, text)
         return answer.toxml()
+
+    def interpreter(self, data):
+        pass
