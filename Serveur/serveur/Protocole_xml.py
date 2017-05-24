@@ -27,4 +27,5 @@ class Protocole_xml(Protocole):  ## sous classe pour protocole xml
         return answer.toxml()
 
     def interpreter(self, data):
-        pass
+        xmlData = xml.dom.minidom.parseString(data)
+
