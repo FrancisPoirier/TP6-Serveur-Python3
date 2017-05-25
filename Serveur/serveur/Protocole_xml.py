@@ -97,8 +97,24 @@ class Protocole_xml(Protocole):  ## sous classe pour protocole xml
         answer = self.generate("erreurDossierExiste")
         return answer
 
+    def generateFileNotExists(self):
+        answer = self.generate("erreurFichierInexistant")
+        return answer
+
+    def generateFileExists(self):
+        answer = self.generate("erreurFichierExiste")
+        return answer
+
     def generateOKMessage(self):
         answer = self.generate("ok")
+        return answer
+
+    def generateReadedFolderError(self):
+        answer = self.generate("erreurDossierLecture")
+        return answer
+
+    def generateReadedFileError(self):
+        answer = self.generate("erreurFichierLecture")
         return answer
 
     def obtainValue(self, xmlData, tag):

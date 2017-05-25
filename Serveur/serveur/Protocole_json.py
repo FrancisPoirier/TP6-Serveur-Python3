@@ -62,8 +62,24 @@ class Protocole_json(Protocole):  ## sous classe pour protocole json
         answer = self.generate("reponse", "erreurDossierExiste")
         return answer
 
+    def generateFileNotExists(self):
+        answer = self.generate("reponse", "erreurFichierInexistant")
+        return answer
+
+    def generateFileExists(self):
+        answer = self.generate("reponse", "erreurFichierExiste")
+        return answer
+
     def generateOKMessage(self):
         answer = self.generate("reponse", "ok")
+        return answer
+
+    def generateReadedFolderError(self):
+        answer = self.generate("reponse", "erreurDossierLecture")
+        return answer
+
+    def generateReadedFileError(self):
+        answer = self.generate("reponse", "erreurFichierLecture")
         return answer
 
     def obtainValue(self, jsonData, key):

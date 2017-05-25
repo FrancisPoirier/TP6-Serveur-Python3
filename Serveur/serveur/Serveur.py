@@ -1,5 +1,6 @@
 import threading
 import os
+import shutil
 from Serveur.serveur.RequestManager import RequestManager
 
 class Server(threading.Thread):
@@ -64,7 +65,7 @@ class Server(threading.Thread):
         #Get the path of the parent folders
         path = self.fileManager.getFilePath(targetedFolder)
 
-        #Check if the file already exists
+        #Check if the folder already exists
         if self.fileManager.pathExists(targetedFolder):
             answer = self.protocol.generateFolderExists()
 
@@ -78,16 +79,48 @@ class Server(threading.Thread):
 
         self.sendToClient(answer)
 
+    def deleteFolder(self, folderToDelete):
+        #process client answer
+        targetedFolder = self.protocol.obtainValue(folderToDelete, "supprimerDossier")
+
+        # Check if the folder exists
+        if self.fileManager.pathExists(targetedFolder):
+            try:
+                shutil.rmtree(targetedFolder) ###rmtree doesnt work on readed folders according to doc
+                answer = self.protocol.generateOKMessage()
+            except:
+                answer = self.protocol.generateReadedFolderError()
+        else:
+            answer = self.protocol.generateFolderNotExists()
+
+        self.sendToClient(answer)
+
+    def deleteFile(self, fileToDelete):
+        # process client answer
+        targetedFile = self.protocol.obtainValue(fileToDelete, "supprimerFichier")
+
+        path = self.fileManager.getFilePath(targetedFile)
+
+        # Check if the folder exists
+        if self.fileManager.pathExists(path):
+            # Check if the file exists
+            if self.fileManager.pathExists(targetedFile):
+                try:
+                    os.remove(targetedFile)
+                    answer = self.protocol.generateOKMessage()
+                except:
+                    answer = self.protocol.generateReadedFileError()
+            else:
+                answer = self.protocol.generateFileNotExists()
+        else:
+            answer = self.protocol.generateFolderNotExists()
+
+        self.sendToClient(answer)
+        
     def identicalFile(self):
         pass
 
     def recentFile(self):
-        pass
-
-    def deleteFolder(self):
-        pass
-
-    def deleteFile(self):
         pass
 
     def download(self):
