@@ -7,7 +7,7 @@ class RequestManager: #Chef d'orchestre qui indique au serveur quoi faire.
     def __init__(self, server):
         self.server = server
 
-    def requestManaging(self, clientRequest):
+    def requestManaging(self, clientRequest, informationForTreatment):
         #Vérification du type de donnée de la variable en paramètre, elle devrait faire partie de l'enum ClientRequest
 
         if (isinstance(clientRequest, ClientRequest) == False):
@@ -15,26 +15,26 @@ class RequestManager: #Chef d'orchestre qui indique au serveur quoi faire.
             sys.exit(1)
 
         if (clientRequest == ClientRequest.BONJOUR_SERVEUR):
-            self.server.bonjour()
+            self.server.hello()
         elif (clientRequest == ClientRequest.NOM_SERVEUR):
-            pass
+            self.server.serverName()
         elif (clientRequest == ClientRequest.LISTE_DOSSIERS):
-            pass
+            self.server.folderList(informationForTreatment)
         elif (clientRequest == ClientRequest.LISTE_FICHIERS):
-            pass
+            self.server.fileList(informationForTreatment)
         elif (clientRequest == ClientRequest.CREER_DOSSIER):
-            pass
+            self.server.createFolder(informationForTreatment)
         elif (clientRequest == ClientRequest.FICHIER_IDENTIQUE):
-            pass
+            self.server.identicalFile(informationForTreatment)
         elif (clientRequest == ClientRequest.FICHIER_RECENT):
-            pass
+            self.server.recentFile(informationForTreatment)
         elif (clientRequest == ClientRequest.SUPPRIMER_DOSSIER):
-            pass
+            self.server.deleteFolder(informationForTreatment)
         elif (clientRequest == ClientRequest.SUPPRIMER_FICHIER):
-            pass
+            self.server.deleteFile(informationForTreatment)
         elif (clientRequest == ClientRequest.TELECHARGER_FICHIER):
-            pass
+            self.server.download(informationForTreatment)
         elif (clientRequest == ClientRequest.TELEVERSER_FICHIER):
-            pass
+            self.server.upload(informationForTreatment)
         elif (clientRequest == ClientRequest.QUITTER):
-            pass
+            self.server.quit()

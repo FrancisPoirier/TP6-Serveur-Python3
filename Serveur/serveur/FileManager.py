@@ -19,6 +19,20 @@ class FileManager:
         fileName = split[1]
         return fileName
 
+    def getFileList(self, folderToList):
+        answer = next(os.walk('./' + str(folderToList)))[2]
+        return answer
+
+    def getFolderList(self, folderToList):
+        answer = next(os.walk('./' + str(folderToList)))[1]
+        return answer
+
+    def pathExists(self, path):
+        if os.path.exists("./" + str(path)):
+            return True
+        else:
+            return False
+
     def createFile(self, filePath, fileName, content, lastTimeModified):
         completeFileName = filePath + "/" + fileName
 

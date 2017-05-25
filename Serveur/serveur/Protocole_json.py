@@ -36,6 +36,39 @@ class Protocole_json(Protocole):  ## sous classe pour protocole json
 
         return answer
 
+    def generateFolderList(self, folderList):
+        childKeyValue = []
+        for folder in folderList:
+            childKeyValue.append(folder)
+
+        childKey = {'dossier' : childKeyValue}
+        parentKey = {'listeDossiers' : childKey}
+        return parentKey
+
+    def generateFileList(self, fileList):
+        childKeyValue = []
+        for file in fileList:
+            childKeyValue.append(file)
+
+        childKey = {'fichier': childKeyValue}
+        parentKey = {'listeFichiers': childKey}
+        return parentKey
+
+    def generateFolderNotExists(self):
+        answer = self.generate("reponse", "erreurDossierInexistant")
+        return answer
+
+    def generateFolderExists(self):
+        answer = self.generate("reponse", "erreurDossierExiste")
+        return answer
+
+    def generateOKMessage(self):
+        answer = self.generate("reponse", "ok")
+        return answer
+
+    def obtainValue(self, jsonData, key):
+        data = jsonData.loads()
+        return data[key]
 
     def obtainDataFromFolders(self, key, sub_key, seperator=''):
 
