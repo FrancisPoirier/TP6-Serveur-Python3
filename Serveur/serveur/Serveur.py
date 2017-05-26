@@ -86,10 +86,10 @@ class Server(threading.Thread):
         # Check if the folder exists
         if self.fileManager.pathExists(targetedFolder):
             try:
-                shutil.rmtree(targetedFolder) ###rmtree doesnt work on readed folders according to doc
+                shutil.rmtree(targetedFolder) ###rmtree doesnt work on read folders according to doc
                 answer = self.protocol.generateOKMessage()
             except:
-                answer = self.protocol.generateReadedFolderError()
+                answer = self.protocol.generateReadFolderError()
         else:
             answer = self.protocol.generateFolderNotExists()
 
@@ -97,31 +97,48 @@ class Server(threading.Thread):
 
     def deleteFile(self, fileToDelete):
         # process client answer
-        targetedFile = self.protocol.obtainValue(fileToDelete, "supprimerFichier")
-
-        path = self.fileManager.getFilePath(targetedFile)
+        targetedFile = self.protocol.obtainDataFromRequest(fileToDelete, "supprimerFichier", "nom")
+        targetedFilePath = self.protocol.obtainDataFromRequest(fileToDelete, "supprmierFichier", "dossier")
 
         # Check if the folder exists
-        if self.fileManager.pathExists(path):
+        if self.fileManager.pathExists(targetedFilePath):
             # Check if the file exists
             if self.fileManager.pathExists(targetedFile):
                 try:
                     os.remove(targetedFile)
                     answer = self.protocol.generateOKMessage()
                 except:
-                    answer = self.protocol.generateReadedFileError()
+                    answer = self.protocol.generateReadFileError()
             else:
                 answer = self.protocol.generateFileNotExists()
         else:
             answer = self.protocol.generateFolderNotExists()
 
         self.sendToClient(answer)
-        
-    def identicalFile(self):
-        pass
 
-    def recentFile(self):
-        pass
+    def recentFile(self, fileToCheck):
+        # process client answer
+        targetedFile = self.protocol.obtainDataFromRequest(fileToCheck, "questionFichierRecent", "nom")
+        targetedFilePath = self.protocol.obtainDataFromRequest(fileToCheck, "questionFichierRecent", "dossier")
+        targetedFileDate = self.protocol.obtainDataFromRequest(fileToCheck, "questionFichierRecent", "date")
+
+        # Check if the folder exists
+        if self.fileManager.pathExists(targetedFilePath):
+            # Check if the file exists
+            if self.fileManager.pathExists(targetedFile):
+                # Check which file is more recent
+                dateOfFileOnServeur = self.fileManager.getDateOfModificationOfFile(targetedFilePath, targetedFile)
+
+                if float(dateOfFileOnServeur) <= float(targetedFileDate):
+                    answer = self.protocol.generateNegativeAnswer()
+                else:
+                    answer = self.protocol.generatePositiveAnswer()
+
+            else:
+                answer = self.protocol.generateFileNotExists()
+        else:
+            answer = self.protocol.generateFolderNotExists
+
 
     def download(self):
         pass

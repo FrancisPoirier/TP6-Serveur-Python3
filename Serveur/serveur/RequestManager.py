@@ -24,8 +24,6 @@ class RequestManager: #Chef d'orchestre qui indique au serveur quoi faire.
             self.server.fileList(informationForTreatment)
         elif (clientRequest == ClientRequest.CREER_DOSSIER):
             self.server.createFolder(informationForTreatment)
-        elif (clientRequest == ClientRequest.FICHIER_IDENTIQUE):
-            self.server.identicalFile(informationForTreatment)
         elif (clientRequest == ClientRequest.FICHIER_RECENT):
             self.server.recentFile(informationForTreatment)
         elif (clientRequest == ClientRequest.SUPPRIMER_DOSSIER):

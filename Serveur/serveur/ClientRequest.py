@@ -11,5 +11,4 @@ class ClientRequest(Enum):
     SUPPRIMER_DOSSIER = 8,
     SUPPRIMER_FICHIER = 9,
     FICHIER_RECENT = 10,
-    FICHIER_IDENTIQUE = 11,
-    QUITTER = 12
+    QUITTER = 11

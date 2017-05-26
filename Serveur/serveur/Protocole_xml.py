@@ -109,11 +109,19 @@ class Protocole_xml(Protocole):  ## sous classe pour protocole xml
         answer = self.generate("ok")
         return answer
 
-    def generateReadedFolderError(self):
+    def generatePositiveAnswer(self):
+        answer = self.generate("oui")
+        return answer
+
+    def generateNegativeAnswer(self):
+        answer = self.generate("non")
+        return answer
+
+    def generateReadFolderError(self):
         answer = self.generate("erreurDossierLecture")
         return answer
 
-    def generateReadedFileError(self):
+    def generateReadFileError(self):
         answer = self.generate("erreurFichierLecture")
         return answer
 
@@ -122,7 +130,7 @@ class Protocole_xml(Protocole):  ## sous classe pour protocole xml
                 answer = node.firstChild.data
                 return answer
 
-    def obtainDataFromFolders(self, xmlData, balise, sub_balise, seperator=''):
+    def obtainDataFromRequest(self, xmlData, balise, sub_balise, seperator=''):
 
         ## Si cette fonction retourne rien, cela veux dire que le fichier racine existe, il est vide, parcontre.
         data = ''

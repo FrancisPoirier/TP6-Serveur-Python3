@@ -74,11 +74,19 @@ class Protocole_json(Protocole):  ## sous classe pour protocole json
         answer = self.generate("reponse", "ok")
         return answer
 
-    def generateReadedFolderError(self):
+    def generatePositiveAnswer(self):
+        answer = self.generate("reponse", "oui")
+        return answer
+
+    def generateNegativeAnswer(self):
+        answer = self.generate("reponse", "non")
+        return answer
+
+    def generateReadFolderError(self):
         answer = self.generate("reponse", "erreurDossierLecture")
         return answer
 
-    def generateReadedFileError(self):
+    def generateReadFileError(self):
         answer = self.generate("reponse", "erreurFichierLecture")
         return answer
 
@@ -86,7 +94,7 @@ class Protocole_json(Protocole):  ## sous classe pour protocole json
         data = jsonData.loads()
         return data[key]
 
-    def obtainDataFromFolders(self, key, sub_key, seperator=''):
+    def obtainDataFromRequest(self, key, sub_key, seperator=''):
 
         ## Si cette fonction retourne rien, cela veux dire que le fichier racine existe, il est vide, parcontre.
         data = ''
