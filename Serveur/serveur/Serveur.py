@@ -26,14 +26,6 @@ class Server(threading.Thread):
     def requestManaging(self, clientRequest, informationForTreatment):
         self.requestManager.requestManaging(clientRequest, informationForTreatment)
 
-    def hello(self):
-        answer = self.protocol.generate("bonjourClient")
-        self.sendToClient(answer)
-
-    def serverName(self):
-        answer = self.protocol.generate("nomServeur", "TP6 Dropbox")
-        self.sendToClient(answer)
-
     def folderList(self, folderToList):
         #process client answer
         targetedFolder = self.protocol.obtainValue(folderToList, "questionListeDossiers")
@@ -71,7 +63,7 @@ class Server(threading.Thread):
 
         #Check if the root of the folderToCreate is existing. It's the valid case
         elif self.fileManager.pathExists(path):
-            os.mkdir("./" + str(targetedFolder))
+            os.mkdir(str(targetedFolder))
             answer = self.protocol.generateOKMessage()
 
         else:
@@ -127,24 +119,78 @@ class Server(threading.Thread):
             # Check if the file exists
             if self.fileManager.pathExists(targetedFile):
                 # Check which file is more recent
-                dateOfFileOnServeur = self.fileManager.getDateOfModificationOfFile(targetedFilePath, targetedFile)
+                try:
+                    dateOfFileOnServeur = self.fileManager.getDateOfModificationOfFile(targetedFilePath, targetedFile)
 
-                if float(dateOfFileOnServeur) <= float(targetedFileDate):
-                    answer = self.protocol.generateNegativeAnswer()
-                else:
-                    answer = self.protocol.generatePositiveAnswer()
-
+                    if float(dateOfFileOnServeur) <= float(targetedFileDate):
+                        answer = self.protocol.generateNegativeAnswer()
+                    else:
+                        answer = self.protocol.generatePositiveAnswer()
+                except:
+                    answer = self.protocol.generateReadFileError()
             else:
                 answer = self.protocol.generateFileNotExists()
         else:
             answer = self.protocol.generateFolderNotExists
 
+        self.sendToClient(answer)
 
-    def download(self):
-        pass
+    def download(self, fileToDownload):
+        # process client answer
+        targetedFile = self.protocol.obtainDataFromRequest(fileToDownload, "telechargerFichier", "nom")
+        targetedFilePath = self.protocol.obtainDataFromRequest(fileToDownload, "telechargerFichier", "dossier")
 
-    def upload(self):
-        pass
+        # Check if the folder exists
+        if self.fileManager.pathExists(targetedFilePath):
+            # Check if the file exists
+            if self.fileManager.pathExists(targetedFile):
+                # Get the information of the file on the server to transfer to the client
+                try:
+                    signature = self.fileManager.getSignatureOfFile(targetedFilePath, targetedFile)
+                    content = self.fileManager.getContentOfFile(targetedFilePath, targetedFile)
+                    date = self.fileManager.getDateOfModificationOfFile(targetedFilePath, targetedFile)
+
+                    answer = self.protocol.generateDownloadInfo(signature, content, date)
+                except:
+                    answer = self.protocol.generateReadFileError()
+            else:
+                answer = self.protocol.generateFileNotExists()
+        else:
+            answer = self.protocol.generateFolderNotExists
+
+        self.sendToClient(answer)
+
+    def upload(self, fileToUpload):
+        # process client answer
+        targetedFile = self.protocol.obtainDataFromRequest(fileToUpload, "televerserFichier", "nom")
+        targetedFilePath = self.protocol.obtainDataFromRequest(fileToUpload, "televerserFichier", "dossier")
+        targetedFileSignature = self.protocol.obtainDataFromRequest(fileToUpload, "televerserFichier", "signature")
+        targetedFileContent = self.protocol.obtainDataFromRequest(fileToUpload, "televerserFichier", "contenu")
+        targetedFileDate = self.protocol.obtainDataFromRequest(fileToUpload, "televerserFichier", "date")
+
+        # Check if the folder exists
+        if self.fileManager.pathExists(targetedFilePath):
+            # Check if the file does not exists
+            if self.fileManager.pathExists(targetedFile) == False:
+                # Create the file and verify the signature
+                self.fileManager.createFile(targetedFilePath, targetedFile, targetedFileContent, targetedFileDate)
+                newFileSignature = self.fileManager.getSignatureOfFile(targetedFilePath, targetedFile)
+
+                # Verify and remove if signature is incorrect
+                if newFileSignature != targetedFileSignature:
+                    answer = self.protocol.generateSignatureError()
+                    os.remove(targetedFilePath + "/" + targetedFile)
+                else:
+                    answer = self.protocol.generateOKMessage()
+            else:
+                answer = self.protocol.generateFileExists()
+        else:
+            answer = self.protocol.generateFolderNotExists()
+
+        self.sendToClient(answer)
 
     def quit(self):
-        pass
+        print("Bye!")
+        answer = self.protocol.generateQuitMessage()
+        self.connection.close()
+

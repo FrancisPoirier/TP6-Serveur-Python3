@@ -1,8 +1,7 @@
 from enum import Enum
 
 class ClientRequest(Enum):
-    BONJOUR_SERVEUR = 1,
-    NOM_SERVEUR = 2,
+
     LISTE_DOSSIERS = 3,
     LISTE_FICHIERS = 4,
     CREER_DOSSIER = 5,

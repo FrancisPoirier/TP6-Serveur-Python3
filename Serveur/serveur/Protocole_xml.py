@@ -33,13 +33,7 @@ class Protocole_xml(Protocole):  ## sous classe pour protocole xml
 
         ##Tous les cas possibles qui peuvent être envoyés par le client connecté.
 
-        if (xmlData.getElementsByTagName("bonjourServeur")):
-            answer = ClientRequest.BONJOUR_SERVEUR
-
-        elif (xmlData.getElementsByTagName("questionNomServeur")):
-            answer = ClientRequest.NOM_SERVEUR
-
-        elif (xmlData.getElementsByTagName("questionListeDossiers")):
+        if (xmlData.getElementsByTagName("questionListeDossiers")):
             answer = ClientRequest.LISTE_DOSSIERS
 
         elif (xmlData.getElementsByTagName("questionListeFichiers")):
@@ -81,11 +75,23 @@ class Protocole_xml(Protocole):  ## sous classe pour protocole xml
         return xmlParentNode.toxml()
 
     def generateFileList(self, fileList):
-        xmlParentNode = self.generateStringFormat("listeFichers")
+        xmlParentNode = self.generateStringFormat("listeFichiers")
 
         for file in fileList:
             xmlChild = self.generateStringFormat("dossier", str(file))
             xmlParentNode.childNodes[0].appendChild(xmlChild.childNodes[0])
+
+        return xmlParentNode.toxml()
+
+    def generateDownloadInfo(self, signature, content, date):
+        xmlParentNode = self.generateStringFormat("fichier")
+        xmlSignature = self.generateStringFormat("signature", signature)
+        xmlContent = self.generateStringFormat("contenu", content)
+        xmlDate = self.generateStringFormat("date", date)
+
+        xmlParentNode.childNodes[0].appendChild(xmlSignature.childNodes[0])
+        xmlParentNode.childNodes[0].appendChild(xmlContent.childNodes[0])
+        xmlParentNode.childNodes[0].appendChild(xmlDate.childNodes[0])
 
         return xmlParentNode.toxml()
 
@@ -123,6 +129,14 @@ class Protocole_xml(Protocole):  ## sous classe pour protocole xml
 
     def generateReadFileError(self):
         answer = self.generate("erreurFichierLecture")
+        return answer
+
+    def generateSignatureError(self):
+        answer = self.generate("erreurSignature")
+        return answer
+
+    def generateQuitMessage(self):
+        answer = self.generate("bye")
         return answer
 
     def obtainValue(self, xmlData, tag):

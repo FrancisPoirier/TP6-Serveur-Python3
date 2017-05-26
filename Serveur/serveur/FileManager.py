@@ -20,15 +20,15 @@ class FileManager:
         return fileName
 
     def getFileList(self, folderToList):
-        answer = next(os.walk('./' + str(folderToList)))[2]
+        answer = next(os.walk(str(folderToList)))[2]
         return answer
 
     def getFolderList(self, folderToList):
-        answer = next(os.walk('./' + str(folderToList)))[1]
+        answer = next(os.walk(str(folderToList)))[1]
         return answer
 
     def pathExists(self, path):
-        if os.path.exists("./" + str(path)):
+        if os.path.exists(str(path)):
             return True
         else:
             return False
